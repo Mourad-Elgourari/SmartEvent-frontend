@@ -1,0 +1,10 @@
+.badge-card {
+  border-radius: 20px;
+  background: #f8f9fa;
+  width: 400px;
+  margin: 0 auto;
+}
+
+form label {
+  font-weight: 600;
+}

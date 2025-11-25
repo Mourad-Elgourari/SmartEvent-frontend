@@ -1,0 +1,10 @@
+.navbar {
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.btn-outline-secondary {
+  border: none;
+}

@@ -1,0 +1,10 @@
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  padding-top: 100px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}

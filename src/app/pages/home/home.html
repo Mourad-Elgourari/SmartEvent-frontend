@@ -1,0 +1,21 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">MyApp</a>
+
+    <div class="d-flex ms-auto">
+      <button class="btn btn-outline-light me-2" (click)="goToLogin()">Login</button>
+      <button class="btn btn-light text-primary" (click)="goToRegister()">Register</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+  <h1 class="display-4 fw-bold">Welcome to MyApp 🚀</h1>
+  <p class="lead mb-4">Your all-in-one solution for managing everything with ease.</p>
+  <div>
+    <button class="btn btn-light btn-lg me-3" (click)="goToLogin()">Login</button>
+    <button class="btn btn-outline-light btn-lg" (click)="goToRegister()">Register</button>
+  </div>
+</section>

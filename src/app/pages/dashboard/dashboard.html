@@ -1,0 +1,51 @@
+<!-- Top Dashboard Counters -->
+<div class="row g-4 mb-5">
+  <!-- Events -->
+  <div class="col-md-3">
+    <div class="p-4 text-center bg-success text-white rounded shadow-lg hover-scale">
+      <i class="fa fa-calendar fs-1 mb-3"></i>
+      <span class="d-block fs-3 fw-bold">{{ eventsCount }}</span>
+      <h4><p class="mb-0">Events</p></h4>
+    </div>
+  </div>
+
+  <!-- Members Count -->
+  <div class="col-md-3">
+    <div class="p-4 text-center bg-primary text-white rounded shadow-lg hover-scale">
+      <i class="fa fa-users fs-1 mb-3"></i>
+      <span class="d-block fs-3 fw-bold">{{ membersCount }}</span>
+      <h4><p class="mb-0">Members</p></h4>
+    </div>
+  </div>
+
+  <!-- Guests -->
+  <div class="col-md-3">
+    <div class="p-4 text-center bg-warning text-dark rounded shadow-lg hover-scale">
+      <i class="fa fa-user-friends fs-1 mb-3"></i>
+      <span class="d-block fs-3 fw-bold">{{ guestsCount }}</span>
+      <h4><p class="mb-0">Guests</p></h4>
+    </div>
+  </div>
+
+  <!-- Current Events -->
+  <div class="col-md-3">
+    <div class="p-4 text-center bg-info text-white rounded shadow-lg hover-scale">
+      <i class="fa fa-list-alt fs-1 mb-3"></i>
+      <span class="d-block fs-3 fw-bold">{{ currentEventsCount }}</span>
+      <h4><p class="mb-0">Current Events</p></h4>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Members Section -->
+<h3 class="mb-3 mt-5">Registered Members</h3>
+<div class="row g-4">
+  <div class="col-md-3" *ngFor="let member of members">
+    <div class="p-4 text-center bg-light text-dark rounded shadow member-card">
+      <img [src]="member.avatar || 'https://i.pravatar.cc/80'"
+           class="rounded-circle mb-2" width="70" alt="Avatar">
+      <h5 class="mb-1">{{ member.name }}</h5>
+      <small class="text-secondary">{{ member.role }}</small>
+    </div>
+  </div>
+</div>

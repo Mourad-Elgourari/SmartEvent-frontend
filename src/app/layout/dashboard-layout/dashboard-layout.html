@@ -1,0 +1,14 @@
+<div class="layout">
+  <app-navbar></app-navbar>
+
+  <div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <main class="main-content flex-grow-1 p-4 bg-light" style="margin:20px">
+      <h2>{{ pageTitle }}</h2>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <app-footer></app-footer>
+</div>
