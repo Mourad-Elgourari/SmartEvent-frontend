@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api-service';
 import { AddEvent } from '../add-event/add-event';
@@ -23,7 +23,7 @@ interface EventItem {
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [NgForOf, NgIf, FormsModule, AddEvent],
+  imports: [FormsModule, AddEvent],
   templateUrl: './event.html',
   styleUrls: ['./event.css'],
 })

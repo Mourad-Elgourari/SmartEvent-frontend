@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe, DateAdapter, provideCalendar } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ApiService } from '../../services/api-service';
-import {NgForOf, NgOptimizedImage} from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 
 interface Member {
   name: string;
@@ -20,7 +20,7 @@ interface Member {
     }),
   ],
   standalone: true,
-  imports: [CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe, NgForOf, NgOptimizedImage]
+  imports: [CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe, NgOptimizedImage]
 })
 export class Dashboard implements OnInit, AfterViewInit {
 

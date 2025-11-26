@@ -40,12 +40,14 @@
 <!-- Bottom Members Section -->
 <h3 class="mb-3 mt-5">Registered Members</h3>
 <div class="row g-4">
-  <div class="col-md-3" *ngFor="let member of members">
-    <div class="p-4 text-center bg-light text-dark rounded shadow member-card">
-      <img [src]="member.avatar || 'https://i.pravatar.cc/80'"
-           class="rounded-circle mb-2" width="70" alt="Avatar">
-      <h5 class="mb-1">{{ member.name }}</h5>
-      <small class="text-secondary">{{ member.role }}</small>
-    </div>
+  @for (member of members; track member) {
+    <div class="col-md-3">
+      <div class="p-4 text-center bg-light text-dark rounded shadow member-card">
+        <img [src]="member.avatar || 'https://i.pravatar.cc/80'"
+          class="rounded-circle mb-2" width="70" alt="Avatar">
+          <h5 class="mb-1">{{ member.name }}</h5>
+          <small class="text-secondary">{{ member.role }}</small>
+        </div>
+      </div>
+    }
   </div>
-</div>

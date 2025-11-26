@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import {NgIf, NgForOf, UpperCasePipe} from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import {Auth} from '../../auth';
 
 interface SidebarLink {
@@ -11,7 +11,7 @@ interface SidebarLink {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterLink, RouterLinkActive, NgIf, NgForOf, UpperCasePipe],
+  imports: [RouterLink, RouterLinkActive, UpperCasePipe],
   templateUrl: './sidebar.html',
   styleUrls: ['./sidebar.css'],
 })

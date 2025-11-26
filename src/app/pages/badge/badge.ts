@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { jsPDF } from 'jspdf';
@@ -9,7 +9,7 @@ import {ApiService} from '../../services/api-service';
 @Component({
   selector: 'app-badge',
   standalone: true,
-  imports: [CommonModule, FormsModule, QRCodeComponent],
+  imports: [FormsModule, QRCodeComponent],
   templateUrl: './badge.html',
   styleUrls: ['./badge.css'],
 })

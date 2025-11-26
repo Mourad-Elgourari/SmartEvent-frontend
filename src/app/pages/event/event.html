@@ -3,38 +3,44 @@
     {{ showForm ? 'Hide Form' : 'Add Event' }}
   </button>
 
-  <div *ngIf="showForm">
-    <app-add-event (eventCreated)="onEventAdded($event)"></app-add-event>
-  </div>
+  @if (showForm) {
+    <div>
+      <app-add-event (eventCreated)="onEventAdded($event)"></app-add-event>
+    </div>
+  }
 
   <table class="table table-striped shadow-sm align-middle">
     <thead class="table-primary">
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Organizer</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Actions</th>
-    </tr>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Organizer</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let event of events; trackBy: trackById">
-      <td>{{ event.id }}</td>
-      <td>{{ event.title }}</td>
-      <td>{{ event.organizer }}</td>
-      <td>{{ event.startDate || '-' }}</td>
-      <td>{{ event.endDate || '-' }}</td>
-      <td>
-        <button class="btn btn-sm btn-danger"
-                (click)="event.id !== undefined && deleteEvent(event.id)">
-          Delete
-        </button>
-      </td>
-    </tr>
-    <tr *ngIf="events.length === 0">
-      <td colspan="6" class="text-center">No Available Event</td>
-    </tr>
+      @for (event of events; track trackById($index, event)) {
+        <tr>
+          <td>{{ event.id }}</td>
+          <td>{{ event.title }}</td>
+          <td>{{ event.organizer }}</td>
+          <td>{{ event.startDate || '-' }}</td>
+          <td>{{ event.endDate || '-' }}</td>
+          <td>
+            <button class="btn btn-sm btn-danger"
+              (click)="event.id !== undefined && deleteEvent(event.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+      @if (events.length === 0) {
+        <tr>
+          <td colspan="6" class="text-center">No Available Event</td>
+        </tr>
+      }
     </tbody>
   </table>
 

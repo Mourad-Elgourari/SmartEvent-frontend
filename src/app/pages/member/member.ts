@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import { ApiService } from '../../services/api-service';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { NgClass } from '@angular/common';
 
 // ---------------- Member Interface ----------------
 export interface MemberModel {
@@ -27,10 +27,8 @@ interface MemberCa {
   templateUrl: './member.html',
   imports: [
     FormsModule,
-    NgForOf,
-    NgIf,
     NgClass
-  ],
+],
   styleUrls: ['./member.css'] // corrected
 })
 export class Member {

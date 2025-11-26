@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { NgForOf, NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -16,7 +16,7 @@ export interface GuestItem {
 @Component({
   selector: 'app-guest',
   standalone: true,
-  imports: [NgForOf, NgIf, FormsModule, NgClass, QRCodeComponent],
+  imports: [FormsModule, NgClass, QRCodeComponent],
   templateUrl: './guest.html',
   styleUrls: ['./guest.css']
 })

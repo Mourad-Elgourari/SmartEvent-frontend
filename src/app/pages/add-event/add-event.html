@@ -18,7 +18,9 @@
         <label>End Date</label>
         <input type="datetime-local" [(ngModel)]="eventItem.endDate" name="endDate" class="form-control">
         <!-- Display error message here -->
-       <div *ngIf="dateError" class="text-danger mt-1">{{ dateError }}</div>
+        @if (dateError) {
+          <div class="text-danger mt-1">{{ dateError }}</div>
+        }
       </div>
     </div>
     <div class="mb-3">

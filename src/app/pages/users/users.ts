@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api-service'; // universal service
 
@@ -8,7 +8,7 @@ import { ApiService } from '../../services/api-service'; // universal service
   selector: 'app-users',
   standalone: true,
   templateUrl: './users.html',
-  imports: [RouterLink, NgForOf, NgIf, FormsModule, NgClass],
+  imports: [RouterLink, FormsModule, NgClass],
   styleUrls: ['./users.css']
 })
 export class Users implements OnInit {
