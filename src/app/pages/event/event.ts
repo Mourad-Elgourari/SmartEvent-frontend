@@ -1,23 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api-service';
-import { AddEvent } from '../add-event/add-event';
+import { AddEvent, EventItem } from '../add-event/add-event';
 
-// EventItem interface
-interface EventItem {
-  id?: number;
-  title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  visibility: string;
-  type: string;
-  sponsors: string;
-  socialNetwork: string;
-  status: string;
-  createdBy?: { username: string };
-  organizer?: string;
+interface MemberCa {
+  id: number;
+  name: string;
+  role: string;
 }
 
 @Component({
@@ -30,49 +19,49 @@ interface EventItem {
 export class Event implements OnInit {
   events: EventItem[] = [];
   showForm = false;
-  users: any[] = []; // ✅ define users to store loaded users
+  members: MemberCa[] = []; // store all members for name lookup
 
   constructor(private api: ApiService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadEvents();
-    this.loadUsers();
-  }
-  trackById(index: number, item: EventItem) {
-    return item.id;
+    this.loadMembers();
   }
 
   toggleForm() {
     this.showForm = !this.showForm;
   }
 
-  async loadEvents() {
+  async loadMembers() {
     try {
-      const data = await this.api.get<EventItem[]>('/events');
-      this.events = data.map((e) => ({
-        ...e,
-        organizer: e.createdBy?.username || 'Unknown',
-      }));
-    } catch (err: any) {
-      console.error('Failed to load events', err.response?.data || err.message);
+      const data = await this.api.get<MemberCa[]>('/members');
+      this.members = data;
+    } catch (err) {
+      console.error(err);
     }
   }
 
-  async loadUsers(page: number = 0) {
+  async loadEvents() {
     try {
-      const data = await this.api.get<{ content: any[] }>('/users', { page });
-      this.users = data.content;
-    } catch (err: any) {
-      console.error('Failed to load users', err.response?.data || err.message);
+      const data = await this.api.get<EventItem[]>('/events');
+      this.events = data;
+    } catch (err) {
+      console.error(err);
     }
   }
 
   onEventAdded(newEvent: EventItem) {
-    this.events.push({
-      ...newEvent,
-      organizer: newEvent.createdBy?.username || 'Unknown',
-    });
+    this.events.push(newEvent);
     this.showForm = false;
+  }
+
+  // Helper: get organizer names from IDs
+  getOrganizerNames(ids: number[]): string {
+    if (!ids || !this.members.length) return '-';
+    return ids
+      .map(id => this.members.find(m => m.id === id)?.name)
+      .filter(Boolean)
+      .join(', ');
   }
 
   async deleteEvent(id?: number) {
@@ -82,8 +71,8 @@ export class Event implements OnInit {
     try {
       await this.api.delete<void>(`/events/${id}`);
       this.events = this.events.filter((e) => e.id !== id);
-    } catch (err: any) {
-      console.error('Failed to delete event', err.response?.data || err.message);
+    } catch (err) {
+      console.error(err);
       alert('Impossible de supprimer cet événement.');
     }
   }

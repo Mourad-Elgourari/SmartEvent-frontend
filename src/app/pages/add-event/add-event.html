@@ -5,10 +5,12 @@
       <label>Title *</label>
       <input [(ngModel)]="eventItem.title" name="title" class="form-control" required>
     </div>
+
     <div class="mb-3">
       <label>Description</label>
       <textarea [(ngModel)]="eventItem.description" name="description" class="form-control"></textarea>
     </div>
+
     <div class="row mb-3">
       <div class="col-md-6">
         <label>Start Date</label>
@@ -17,12 +19,21 @@
       <div class="col-md-6">
         <label>End Date</label>
         <input type="datetime-local" [(ngModel)]="eventItem.endDate" name="endDate" class="form-control">
-        <!-- Display error message here -->
-        @if (dateError) {
-          <div class="text-danger mt-1">{{ dateError }}</div>
-        }
+        <div class="text-danger mt-1">{{ dateError }}</div>
       </div>
     </div>
+
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Organizers</mat-label>
+        <mat-select [(ngModel)]="organizers" name="organizers" multiple>
+          <mat-option *ngFor="let m of members" [value]="m.id" [disabled]="m.id === 0">
+            {{ m.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
     <div class="mb-3">
       <label>Type</label>
       <select [(ngModel)]="eventItem.type" name="type" class="form-select">
@@ -31,6 +42,7 @@
         <option value="MEETUP">Meetup</option>
       </select>
     </div>
+
     <button type="submit" class="btn btn-success">Save</button>
   </form>
 </div>
